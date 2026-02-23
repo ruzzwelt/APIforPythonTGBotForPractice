@@ -25,10 +25,7 @@ final class CheckController extends AbstractController
     #[Route('/api/check/together/')]
     public function getDaysTogether(): JsonResponse
     {
-        $today = new \DateTime();
-        $startDate = new \DateTime('2025-05-12');
-
-        $dayDiff = $today->diff($startDate)->days + 1;
+        $dayDiff = CheckModel::getDaysTogether();
 
         return $this->json([
             'message' =>  "Мы вместе: ".$dayDiff." дней \n(столько дней прошло с даты первого стрита: 12 мая 2025)",

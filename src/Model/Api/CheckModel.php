@@ -3,7 +3,7 @@
 namespace App\Model\Api;
 
 
-class CheckModel
+final class CheckModel
 {
 
     public static function getCheckMonthDay(int $month): string
@@ -22,10 +22,14 @@ class CheckModel
         return $today->diff($lastMonth)->days + 1;
     }
 
-    public static function getDaysTogether()
+    public static function getDaysTogether(
+        \DateTime $today = new \DateTime(),
+        \DateTime $startDate = new \DateTime('2025-05-12')
+    ): int|false
     {
-
+        return $today->diff($startDate)->days + 1;
     }
+
     public static function checkTrue(): bool
     {
         return true;
